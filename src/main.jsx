@@ -4,11 +4,45 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./Root";
+import Home from "./pages/Home";
+import AllItems from "./pages/AllItems";
+import AddCraft from "./pages/AddCraft";
+import MyCraft from "./pages/MyCraft";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Root></Root>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/all-items",
+        element: <AllItems></AllItems>,
+      },
+
+      {
+        path: "/add-cardItems",
+        element: <AddCraft></AddCraft>,
+      },
+      {
+        path: "/my-craft",
+        element: <MyCraft></MyCraft>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
   },
 ]);
 
