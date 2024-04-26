@@ -1,14 +1,20 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut().then().catch();
+  };
   const navMenu = (
     <>
       <NavLink
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-orange-500 text-white bg-orange-500 py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-orange-500 hover:text-white hover:bg-orange-500 transition-all"
+            ? "border-2 border-darkBeige text-white bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
+            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
         }
       >
         Home
@@ -18,8 +24,8 @@ const Nav = () => {
         to="/all-items"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-orange-500 text-white bg-orange-500 py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-orange-500 hover:text-white hover:bg-orange-500 transition-all"
+            ? "border-2 border-darkBeige text-w bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
+            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
         }
       >
         All Art & craft Items
@@ -29,8 +35,8 @@ const Nav = () => {
         to="/add-cardItems"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-orange-500 text-white bg-orange-500 py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-orange-500 hover:text-white hover:bg-orange-500 transition-all"
+            ? "border-2 border-darkBeige text-white bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
+            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
         }
       >
         Add Craft Item
@@ -39,8 +45,8 @@ const Nav = () => {
         to="/my-craft"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-orange-500 text-white bg-orange-500 py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-orange-500 hover:text-white hover:bg-orange-500 transition-all"
+            ? "border-2 border-darkBeige text-white bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
+            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
         }
       >
         My Art&Craft List
@@ -48,9 +54,9 @@ const Nav = () => {
     </>
   );
   return (
-    <div>
+    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 text-deepBrown">
       {/*  */}
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,18 +82,66 @@ const Nav = () => {
               {navMenu}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">WoodWoven</a>
+          <a className="text-2xl font-bold">WoodWoven</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navMenu}</ul>
         </div>
-        <div className="navbar-end">
-          <Link to="/login" className="btn">
+        <div className="navbar-end gap-4">
+          {/*  */}
+          {/* user profile image & register*/}
+          {user ? (
+            <div
+              className="tooltip tooltip-bottom tooltip-accent  "
+              data-tip={user.displayName}
+            >
+              {user.photoURL ? (
+                <img
+                  className="w-14 h-14 rounded-full border-2 border-darkBeige object-cover "
+                  // title={user.displayName}
+                  src={user.photoURL}
+                  alt="Profile"
+                />
+              ) : (
+                <img
+                  data-aos="zoom-in"
+                  className="w-10"
+                  src="https://i.ibb.co/X3yrLFJ/pngegg.png"
+                  alt=""
+                />
+              )}
+            </div>
+          ) : (
+            <Link
+              to="/register"
+              className="btn border-2 border-darkBeige text-darkBeige bg-transparent hover:bg-darkBeige hover:text-white hover:border-darkBeige"
+            >
+              Register
+            </Link>
+          )}
+          {/* login and logout */}
+          {user ? (
+            <button
+              onClick={handleLogOut}
+              className="btn border-teal-500 bg-teal-500 text-white font-bold"
+            >
+              LogOut
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="btn border-darkBeige bg-darkBeige text-white font-bold"
+            >
+              Login
+            </Link>
+          )}
+          {/*  */}
+          {/* <Link to="/login" className="btn">
             Login
-          </Link>
-          <Link to="/register" className="btn">
+          </Link> */}
+          {/* <Link to="/register" className="btn">
             Register
-          </Link>
+          </Link> */}
         </div>
       </div>
       {/*  */}
