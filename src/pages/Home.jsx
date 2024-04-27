@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import SixCraftCard from "../components/SixCraftCard";
+import Catagories from "../components/Catagories";
 
 const Home = () => {
   const crafts = useLoaderData();
@@ -22,6 +23,9 @@ const Home = () => {
         {sixCraft.map((craft) => (
           <SixCraftCard key={craft._id} craft={craft}></SixCraftCard>
         ))}
+      </div>
+      <div>
+        <Catagories></Catagories>
       </div>
     </div>
   );

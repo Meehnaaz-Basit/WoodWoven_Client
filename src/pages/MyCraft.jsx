@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyCraft = () => {
   const { user } = useContext(AuthContext);
@@ -8,7 +9,7 @@ const MyCraft = () => {
   const userCrafts = allCrafts.filter(
     (craft) => craft.user_email === user?.email
   );
-
+  const [myCrafts, setMyCrafts] = useState(userCrafts);
   //
   const [customizationFilter, setCustomizationFilter] = useState("All");
 
@@ -25,7 +26,41 @@ const MyCraft = () => {
       return true;
     }
   });
+
   //
+  const handleDelete = (_id) => {
+    console.log("delete", _id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/allCrafts/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.detetedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Craft item has been deleted.",
+                icon: "success",
+              });
+            }
+            const remainingMyCrafts = myCrafts.filter(
+              (craft) => craft._id !== _id
+            );
+            setMyCrafts(remainingMyCrafts);
+          });
+      }
+    });
+  };
   return (
     <div>
       <div>
@@ -46,7 +81,10 @@ const MyCraft = () => {
               {" "}
               Update
             </Link>
-            <Link className="btn"> Delete</Link>
+            <button onClick={() => handleDelete(craft._id)} className="btn">
+              {" "}
+              Delete
+            </button>
           </div>
         ))}
       </div>
