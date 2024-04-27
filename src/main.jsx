@@ -14,6 +14,8 @@ import Register from "./pages/Register";
 import AuthProvider from "./provider/AuthProvider";
 import CraftDetail from "./components/CraftDetail";
 import Update from "./components/Update";
+import CraftByCategory from "./components/CraftByCategory";
+import PrivateRoute from "./route/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -33,11 +35,19 @@ const router = createBrowserRouter([
 
       {
         path: "/add-cardItems",
-        element: <AddCraft></AddCraft>,
+        element: (
+          <PrivateRoute>
+            <AddCraft></AddCraft>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-craft",
-        element: <MyCraft></MyCraft>,
+        element: (
+          <PrivateRoute>
+            <MyCraft></MyCraft>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/allCrafts"),
       },
       {
@@ -50,13 +60,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/craft-detail/:id",
-        element: <CraftDetail></CraftDetail>,
+        element: (
+          <PrivateRoute>
+            <CraftDetail></CraftDetail>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allCrafts/${params.id}`),
       },
       {
         path: "/update",
         element: <Update></Update>,
+      },
+      {
+        path: "/categories/:category",
+        element: <CraftByCategory></CraftByCategory>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allCrafts/${params.category}`),
       },
     ],
   },

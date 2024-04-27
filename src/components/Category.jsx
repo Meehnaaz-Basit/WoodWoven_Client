@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Category = ({ eachCategory }) => {
   const { category, category_image } = eachCategory;
   return (
-    <Link to="">
+    <Link to={`/categories/${category}`}>
       <div className="relative">
         <img src={category_image} alt="" />
         <div className="absolute top-0">

@@ -1,11 +1,8 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const CraftDetail = () => {
   const crafts = useLoaderData();
-  // const { bookName } = book;
-  //   const { id } = useParams();
-  //   const craft = crafts.find((craft) => craft._id === parseInt(id));
-  //   console.log(crafts);
+
   const {
     item_image,
     item_name,

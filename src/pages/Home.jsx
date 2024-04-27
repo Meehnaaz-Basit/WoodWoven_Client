@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import SixCraftCard from "../components/SixCraftCard";
 import Catagories from "../components/Catagories";
+import CraftByCategory from "../components/CraftByCategory";
 
 const Home = () => {
   const crafts = useLoaderData();
@@ -8,6 +9,7 @@ const Home = () => {
   // console.log(sixCraft);
   return (
     <div>
+      <CraftByCategory></CraftByCategory>
       <h2>this is home page</h2>
       {/* <div className="flex">
         <div>
