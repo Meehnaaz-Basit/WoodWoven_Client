@@ -32,6 +32,18 @@ const AddCraft = () => {
       user_name,
     };
     console.log(addedCraft);
+    // send data to server
+    fetch("http://localhost:5000/allCrafts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addedCraft),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
