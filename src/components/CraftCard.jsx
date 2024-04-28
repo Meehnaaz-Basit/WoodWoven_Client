@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import Button from "./buttons/Button";
 
-const CraftCard = ({ craft }) => {
+const CraftCard = ({ craft, serialNumber }) => {
   const {
     _id,
     item_image,
@@ -14,23 +15,27 @@ const CraftCard = ({ craft }) => {
     user_email,
     user_name,
   } = craft;
+
   return (
-    <div className="">
-      <div className="card bg-base-100 shadow-xl">
-        <figure>
-          <img src={item_image} className="w-60" alt="Shoes" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{item_name}</h2>
-          <p>{short_description}</p>
-          <div className="card-actions justify-end">
-            <Link to={`/craft-detail/${_id}`} className="btn btn-primary">
-              View Details
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <tr>
+        <th>{serialNumber}</th>
+        <td>{item_name}</td>
+        <td>{category}</td>
+        <td>{price}</td>
+        <td>
+          <p>{user_name}</p>
+          <p>{user_email}</p>
+        </td>
+        <td>
+          <Link to="">
+            <button>
+              <Button buttonText="View Details"></Button>
+            </button>
+          </Link>
+        </td>
+      </tr>
+    </>
   );
 };
 
