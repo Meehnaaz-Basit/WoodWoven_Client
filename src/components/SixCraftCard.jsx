@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "./buttons/Button";
 
 const SixCraftCard = ({ craft }) => {
   const {
@@ -15,11 +16,16 @@ const SixCraftCard = ({ craft }) => {
     user_name,
   } = craft;
   return (
-    <div>
+    <div className="">
       <img src={item_image} className="w-48" alt="" />
-      <h2>card for home{item_name}</h2>
-      <Link to={`/craft-detail/${_id}`} className="btn">
-        View Details
+      <h2>{item_name}</h2>
+      <p>{category}</p>
+      <p>$ {price}</p>
+      <Link to={`/craft-detail/${_id}`}>
+        <button>
+          {" "}
+          <Button buttonText="View Details"></Button>
+        </button>
       </Link>
     </div>
   );

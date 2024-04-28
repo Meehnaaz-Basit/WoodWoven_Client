@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -6,11 +6,18 @@ import Swal from "sweetalert2";
 const MyCraft = () => {
   const { user } = useContext(AuthContext);
   const allCrafts = useLoaderData();
-  const userCrafts = allCrafts.filter(
-    (craft) => craft.user_email === user?.email
-  );
-  const [myCrafts, setMyCrafts] = useState(userCrafts);
-  //
+  const [userCrafts, setUserCrafts] = useState([]);
+
+  useEffect(() => {
+    // Filter user's crafts when allCrafts or user changes
+    if (allCrafts && user) {
+      const filteredCrafts = allCrafts.filter(
+        (craft) => craft.user_email === user.email
+      );
+      setUserCrafts(filteredCrafts);
+    }
+  }, [allCrafts, user]);
+
   const [customizationFilter, setCustomizationFilter] = useState("All");
 
   const handleFilterChange = (filter) => {
@@ -27,9 +34,7 @@ const MyCraft = () => {
     }
   });
 
-  //
   const handleDelete = (_id) => {
-    console.log("delete", _id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -45,22 +50,32 @@ const MyCraft = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            if (data.detetedCount > 0) {
+            if (data.deletedCount > 0) {
+              // Remove the deleted item from userCrafts
+              const updatedUserCrafts = userCrafts.filter(
+                (craft) => craft._id !== _id
+              );
+              // Update the state with the new userCrafts
+              setUserCrafts(updatedUserCrafts);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your Craft item has been deleted.",
                 icon: "success",
               });
             }
-            const remainingMyCrafts = myCrafts.filter(
-              (craft) => craft._id !== _id
-            );
-            setMyCrafts(remainingMyCrafts);
+          })
+          .catch((error) => {
+            console.error("Error deleting craft:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "An error occurred while deleting the craft.",
+              icon: "error",
+            });
           });
       }
     });
   };
+
   return (
     <div>
       <div>
@@ -78,11 +93,9 @@ const MyCraft = () => {
             <p>Category: {craft.category}</p>
             <p>Description: {craft.short_description}</p>
             <Link to="/update" className="btn">
-              {" "}
               Update
             </Link>
             <button onClick={() => handleDelete(craft._id)} className="btn">
-              {" "}
               Delete
             </button>
           </div>

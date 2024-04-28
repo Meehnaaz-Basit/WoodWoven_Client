@@ -11,11 +11,12 @@ const Home = () => {
     <div>
       <h2>this is home page</h2>
       {/* slider */}
-
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-        {sixCraft.map((craft) => (
-          <SixCraftCard key={craft._id} craft={craft}></SixCraftCard>
-        ))}
+      <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+          {sixCraft.map((craft) => (
+            <SixCraftCard key={craft._id} craft={craft}></SixCraftCard>
+          ))}
+        </div>
       </div>
       <div>
         <Catagories></Catagories>

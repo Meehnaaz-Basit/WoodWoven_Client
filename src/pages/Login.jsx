@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
   const { logIn, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const handleLogin = (e) => {
@@ -20,11 +24,21 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         console.log(result.user.photoURL);
+        toast.success("Logged In Successfully");
         // navigate after login
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error);
+        if (error.code === "auth/wrong-password") {
+          toast.error("Incorrect password. Please try again.");
+        } else if (error.code === "auth/user-not-found") {
+          toast.error("User not found. Please check your email address.");
+        } else if (error.code === "auth/invalid-credential") {
+          toast.error("Please check your email or password again");
+        } else {
+          toast.error("An error occurred. Please try again later.");
+        }
       });
   };
   const handleLoginWithGoogle = (e) => {
@@ -33,6 +47,7 @@ const Login = () => {
     loginWithGoogle()
       .then((result) => {
         console.log(result.user);
+        toast.success("Logged In Successfully with Google ");
         // navigate after login
         navigate(location?.state ? location.state : "/");
       })
@@ -46,6 +61,7 @@ const Login = () => {
     loginWithGithub()
       .then((result) => {
         console.log(result.user);
+        toast.success("Logged In Successfully with GitHub");
         // navigate after login
         navigate(location?.state ? location.state : "/");
       })
@@ -84,23 +100,23 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  // type={showPassword ? "text" : "password"}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
+                  // type="password"
                   name="password"
                   placeholder="Password"
                   className="input input-bordered"
                   required
                 />
-                {/* <span
+                <span
                   className="absolute right-6 bottom-4"
-                  // onClick={() => setShowPassword(!showPassword)}
+                  onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
                     <FaEye className="text-gray-600 cursor-pointer"></FaEye>
                   ) : (
                     <FaEyeSlash className="text-gray-600 cursor-pointer"></FaEyeSlash>
                   )}
-                </span> */}
+                </span>
               </div>
               <div className=" mt-6">
                 <button className="btn w-full border-2 border-custom-jute bg-custom-jute text-white font-bold hover:bg-transparent hover:border-custom-jute hover:text-custom-jute">

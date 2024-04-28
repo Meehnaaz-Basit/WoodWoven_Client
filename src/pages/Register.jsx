@@ -1,66 +1,15 @@
-// import { useContext } from "react";
-// import { AuthContext } from "../provider/AuthProvider";
-// import { updateProfile } from "firebase/auth";
-
-// const Register = () => {
-//   const { createUser } = useContext(AuthContext);
-
-//   const handleRegister = (e) => {
-//     e.preventDefault();
-//     const name = e.target.name.value;
-//     const email = e.target.email.value;
-//     const password = e.target.password.value;
-//     const photoURL = e.target.photoURL.value;
-
-//     const regInfo = { name, email, password, photoURL };
-//     console.log(regInfo, createUser);
-
-//     //
-
-//     createUser(email, password)
-//       .then((result) => {
-//         console.log(result.user, email, password);
-
-//         updateProfile(result.user, { displayName: name, photoURL: photoURL });
-//         console.log(name, photoURL, "update");
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   };
-//   return (
-//     <div>
-//       <h2>this is register page</h2>
-//       <form onSubmit={handleRegister}>
-//         <input type="text" name="name" placeholder="Your name" required />
-//         <input type="email" name="email" placeholder="Your Email" />
-//         <input type="password" name="password" placeholder="Your password" />
-//         <input type="text" name="photoURL" placeholder="Your photo url" />
-//         <button className="btn">Register</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Register;
-
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-// import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 // import { Helmet } from "react-helmet-async";
-// import { updateProfile } from "firebase/auth";
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  // useEffect(() => {
-  //   AOS.init({ duration: "1000" });
-  // }, []);
-  // const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { createUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -78,21 +27,21 @@ const Register = () => {
     console.log(name, email, password, photoURL);
 
     // Password validation
-    // if (!containsUppercase(password)) {
-    //   toast.error("Password must contain an uppercase letter");
+    if (!containsUppercase(password)) {
+      toast.error("Password must contain an uppercase letter");
 
-    //   return;
-    // }
-    // if (!containsLowercase(password)) {
-    //   toast.error("Password must contain a lowercase letter");
+      return;
+    }
+    if (!containsLowercase(password)) {
+      toast.error("Password must contain a lowercase letter");
 
-    //   return;
-    // }
-    // if (!hasSufficientLength(password)) {
-    //   toast.error("Password must be at least 6 characters long");
+      return;
+    }
+    if (!hasSufficientLength(password)) {
+      toast.error("Password must be at least 6 characters long");
 
-    //   return;
-    // }
+      return;
+    }
 
     // create user
     createUser(email, password, photoURL)
@@ -106,17 +55,17 @@ const Register = () => {
 
         navigate(location?.state ? location.state : "/login");
 
-        // toast.success("Registered Successfully ");
+        toast.success("Registered Successfully ");
       })
       .catch((error) => {
         console.error(error);
-        // if (error.code === "auth/email-already-in-use") {
-        //   toast.error(
-        //     "Email is already in use. Please use a different email address."
-        //   );
-        // } else {
-        //   toast.error("Error registering");
-        // }
+        if (error.code === "auth/email-already-in-use") {
+          toast.error(
+            "Email is already in use. Please use a different email address."
+          );
+        } else {
+          toast.error("Error registering");
+        }
       });
   };
 
@@ -125,29 +74,29 @@ const Register = () => {
   //
 
   // Function to check if password contains an uppercase letter
-  // const containsUppercase = (str) => {
-  //   for (let i = 0; i < str.length; i++) {
-  //     if (str[i] >= "A" && str[i] <= "Z") {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // };
+  const containsUppercase = (str) => {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] >= "A" && str[i] <= "Z") {
+        return true;
+      }
+    }
+    return false;
+  };
 
   // Function to check if password contains a lowercase letter
-  // const containsLowercase = (str) => {
-  //   for (let i = 0; i < str.length; i++) {
-  //     if (str[i] >= "a" && str[i] <= "z") {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // };
+  const containsLowercase = (str) => {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] >= "a" && str[i] <= "z") {
+        return true;
+      }
+    }
+    return false;
+  };
 
   // Function to check if password has sufficient length
-  // const hasSufficientLength = (str) => {
-  //   return str.length >= 6;
-  // };
+  const hasSufficientLength = (str) => {
+    return str.length >= 6;
+  };
 
   //
 
@@ -197,14 +146,14 @@ const Register = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  // type={showPassword ? "text" : "password"}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
+                  // type="password"
                   name="password"
                   placeholder="Password"
                   className="input input-bordered"
                   required
                 />
-                {/* <span
+                <span
                   className="absolute right-6 bottom-4"
                   onClick={() => setShowPassword(!showPassword)}
                 >
@@ -213,7 +162,7 @@ const Register = () => {
                   ) : (
                     <FaEyeSlash className="text-gray-600 cursor-pointer"></FaEyeSlash>
                   )}
-                </span> */}
+                </span>
               </div>
               <div className="form-control">
                 <label className="label">
