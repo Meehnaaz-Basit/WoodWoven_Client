@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Button from "./buttons/Button";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -13,8 +14,8 @@ const Nav = () => {
         to="/"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-darkBeige text-white bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
+            ? " border-b-2 border-custom-jute text-custom-jute bg-transparent py-2 px-3 mx-2  font-semibold"
+            : "border-b-2 border-transparent text-custom-jute py-2 px-3 mx-2 font-semibold hover:border-custom-jute hover:text-custom-jute hover:bg-transparent transition-all"
         }
       >
         Home
@@ -24,8 +25,8 @@ const Nav = () => {
         to="/all-items"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-darkBeige text-w bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
+            ? " border-b-2 border-custom-jute text-custom-jute bg-transparent py-2 px-3 mx-2  font-semibold"
+            : "border-b-2 border-transparent text-custom-jute py-2 px-3 mx-2 font-semibold hover:border-custom-jute hover:text-custom-jute hover:bg-transparent transition-all"
         }
       >
         All Art & craft Items
@@ -35,8 +36,8 @@ const Nav = () => {
         to="/add-cardItems"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-darkBeige text-white bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
+            ? " border-b-2 border-custom-jute text-custom-jute bg-transparent py-2 px-3 mx-2  font-semibold"
+            : "border-b-2 border-transparent text-custom-jute py-2 px-3 mx-2 font-semibold hover:border-custom-jute hover:text-custom-jute hover:bg-transparent transition-all"
         }
       >
         Add Craft Item
@@ -45,8 +46,8 @@ const Nav = () => {
         to="/my-craft"
         className={({ isActive }) =>
           isActive
-            ? "border-2 border-darkBeige text-white bg-[#B8860B] py-2 px-3 mx-2  rounded-lg font-semibold"
-            : "border-2 border-transparent py-2 px-3 mx-2  rounded-lg font-semibold hover:border-[#B8860B] hover:text-white hover:bg-[#B8860B] transition-all"
+            ? " border-b-2 border-custom-jute text-custom-jute bg-transparent py-2 px-3 mx-2  font-semibold"
+            : "border-b-2 border-transparent text-custom-jute py-2 px-3 mx-2 font-semibold hover:border-custom-jute hover:text-custom-jute hover:bg-transparent transition-all"
         }
       >
         My Art&Craft List
@@ -54,7 +55,7 @@ const Nav = () => {
     </>
   );
   return (
-    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 text-deepBrown">
+    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0">
       {/*  */}
       <div className="navbar bg-base-100 ">
         <div className="navbar-start">
@@ -82,7 +83,12 @@ const Nav = () => {
               {navMenu}
             </ul>
           </div>
-          <a className="text-2xl font-bold">WoodWoven</a>
+          <a
+            href="/"
+            className="text-4xl font-extrabold text-custom-jute font-oregano"
+          >
+            WoodWoven
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navMenu}</ul>
@@ -97,7 +103,7 @@ const Nav = () => {
             >
               {user.photoURL ? (
                 <img
-                  className="w-14 h-14 rounded-full border-2 border-darkBeige object-cover "
+                  className="w-14 h-14 rounded-full border-2 border-custom-jute object-cover "
                   // title={user.displayName}
                   src={user.photoURL}
                   alt="Profile"
@@ -114,25 +120,25 @@ const Nav = () => {
           ) : (
             <Link
               to="/register"
-              className="btn border-2 border-darkBeige text-darkBeige bg-transparent hover:bg-darkBeige hover:text-white hover:border-darkBeige"
+              // className="btn border-2  bg-transparent hover:text-white "
             >
-              Register
+              <Button buttonText="Register"></Button>
             </Link>
           )}
           {/* login and logout */}
           {user ? (
-            <button
-              onClick={handleLogOut}
-              className="btn border-teal-500 bg-teal-500 text-white font-bold"
-            >
-              LogOut
-            </button>
+            // <button onClick={handleLogOut} className="btn text-white font-bold">
+            //   LogOut
+            // </button>
+            <Link onClick={handleLogOut}>
+              <Button buttonText="LogOut" onClick={handleLogOut}></Button>
+            </Link>
           ) : (
-            <Link
-              to="/login"
-              className="btn border-darkBeige bg-darkBeige text-white font-bold"
-            >
-              Login
+            // <Link to="/login" className="btn  text-white font-bold">
+            //   Login
+            // </Link>
+            <Link to="/login">
+              <Button buttonText="Login"></Button>
             </Link>
           )}
           {/*  */}

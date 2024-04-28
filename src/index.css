@@ -6,3 +6,10 @@
 
 /*  font-family: "Figtree", sans-serif; */
 /* font-family: "Oregano", cursive; */
+
+.my-primary-text {
+  color: #d9a35c;
+}
+.my-primary-bg {
+  background-color: #d9a35c;
+}

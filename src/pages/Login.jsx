@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const { logIn, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     // console.log("login");
@@ -18,6 +20,8 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         console.log(result.user.photoURL);
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error);
@@ -29,6 +33,8 @@ const Login = () => {
     loginWithGoogle()
       .then((result) => {
         console.log(result.user);
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error.message);
@@ -40,6 +46,8 @@ const Login = () => {
     loginWithGithub()
       .then((result) => {
         console.log(result.user);
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error);
@@ -50,8 +58,8 @@ const Login = () => {
       <div className=" min-h-[70%] my-8">
         <div className="hero-content flex-col max-w-full">
           <div className="text-center" data-aos="zoom-in">
-            <h1 className="text-3xl font-oregano font-bold text-orange-500">
-              Login your account!
+            <h1 className="text-3xl font-oregano font-bold text-custom-jute">
+              Login your account !
             </h1>
           </div>
           <div
@@ -94,44 +102,46 @@ const Login = () => {
                   )}
                 </span> */}
               </div>
-              <div className="form-control mt-6">
-                <button className="btn border-orange-500 bg-orange-500 text-white font-bold">
+              <div className=" mt-6">
+                <button className="btn w-full border-2 border-custom-jute bg-custom-jute text-white font-bold hover:bg-transparent hover:border-custom-jute hover:text-custom-jute">
                   Login
                 </button>
               </div>
             </form>
-            <div className="mx-8 mt-3 mb-8 h-[1px] text-center relative  bg-orange-500">
-              <span className="p-2 px-4 font-semibold absolute top-5 left-50% transform -translate-x-1/2 -translate-y-full bg-white ">
+            <div className="mx-8 mt-3 mb-8 h-[1px] text-center relative  bg-custom-jute">
+              <span className="p-2 px-4 font-semibold absolute top-5 left-50% transform -translate-x-1/2 -translate-y-full bg-white text-custom-jute ">
                 OR
               </span>
-              <p className="mt-5 font-semibold ">Login with Social media</p>
+              <p className="mt-5 font-semibold text-custom-jute ">
+                Login with Social media
+              </p>
             </div>
 
             <div className="flex justify-center gap-8 p-8 pt-0 mt-10 text-sm">
               <button
                 onClick={handleLoginWithGoogle}
-                className="btn bg-transparent border-2  "
+                className="btn bg-transparent border-2 hover:bg-transparent hover:border-custom-jute "
               >
                 <img
                   className="w-5"
                   src="https://i.ibb.co/r3Z4M9J/google.png"
                   alt=""
                 />{" "}
-                <span className="font-bold text-orange-500">Google</span>
+                <span className="font-bold text-custom-jute">Google</span>
               </button>
               <button
                 onClick={handleLoginWithGithub}
-                className="btn bg-transparent border-2 border-orange-500 hover:bg-transparent "
+                className="btn bg-transparent border-2 hover:bg-transparent hover:border-custom-jute  "
               >
                 <img
                   className="w-5"
                   src="https://i.ibb.co/jVWqChS/github.png"
                   alt=""
                 />{" "}
-                <span className="font-bold text-orange-500">GitHub</span>
+                <span className="font-bold text-custom-jute">GitHub</span>
               </button>
             </div>
-            <div className="flex justify-between p-8 pt-0 text-sm">
+            <div className="flex justify-between text-custom-jute p-8 pt-0 text-sm">
               <div>
                 <p> Do not have any account?</p>
               </div>
