@@ -116,7 +116,7 @@ const MyCraft = () => {
                   Price : $ {craft.price}
                 </h2>
                 <div>
-                  <Link to="/update" className="btn">
+                  <Link to={`/update/${craft._id}`} className="btn">
                     Update
                   </Link>
                   <button

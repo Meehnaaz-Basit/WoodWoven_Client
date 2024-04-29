@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import Button from "./buttons/Button";
 
 const CraftByCategory = () => {
   const { category } = useParams();
@@ -11,19 +12,44 @@ const CraftByCategory = () => {
   );
 
   return (
-    <div>
-      <h2>
-        Crafts in {category} category: {craftByCategory.length}
+    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 pt-12">
+      <h2 className="font-oregano font-bold text-3xl text-center">
+        Crafts category:
+        <span className="text-custom-jute"> {category} </span>
       </h2>
       {/* Render craftByCategory */}
-      <ul>
+      <div className="grid gap-6 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         {craftByCategory.map((craft) => (
-          <li key={craft._id}>
-            <p>{craft.item_name}</p>
-            <img src={craft.item_image} alt={craft.item_name} />
-          </li>
+          <div key={craft._id}>
+            <div className=" mt-8 shadow-md p-6">
+              <div>
+                <img
+                  className="w-full h-60 bg-custom-jute object-contain"
+                  src={craft.item_image}
+                  alt=""
+                />
+              </div>
+              <div className="font-semibold space-y-3 mt-3">
+                <h1 className="font-oregano text-2xl font-bold text-custom-jute capitalize">
+                  {craft.item_name}
+                </h1>
+                <p>Description: {craft.short_description}</p>
+                <p>Subcategory: {craft.subcategory_Name}</p>
+                <div>
+                  <span>Rating: {craft.rating}</span>
+                  <span>Processing Time: {craft.processing_time}</span>
+                </div>
+                <h2>Price: ${craft.price}</h2>
+                <div>
+                  <button>
+                    <Button buttonText="View Detail"></Button>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

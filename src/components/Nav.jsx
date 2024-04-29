@@ -55,7 +55,7 @@ const Nav = () => {
     </>
   );
   return (
-    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0">
+    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 pb-0 ">
       {/*  */}
       <div className="navbar bg-base-100 ">
         <div className="navbar-start">

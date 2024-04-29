@@ -10,6 +10,7 @@ export default {
     colors: {
       "custom-jute": "#d8a35d",
       white: "#ffffff",
+      black: "#000000",
     },
   },
   plugins: [require("daisyui")],
