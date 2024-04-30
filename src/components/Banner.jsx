@@ -13,11 +13,10 @@ import {
   Keyboard,
   Autoplay,
 } from "swiper/modules";
-import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="my-6">
+    <div className="">
       <Swiper
         cssMode={true}
         autoplay={{
@@ -35,86 +34,93 @@ const Banner = () => {
         className="mySwiper "
       >
         <SwiperSlide>
-          <Link to="/property/2">
-            <div className="relative ">
-              <div
-                className="bg-cover bg-center w-full  relative flex justify-center items-center"
-                style={{
-                  backgroundImage:
-                    "url(https://i.ibb.co/KhdQf5K/photo-woodworker-carving-decorative-wooden-1056572-3756.png)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  width: "100%",
-                  height: "90vh",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                {/* Overlay */}
-                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
-                {/* content */}
-                <div className="absolute text-center space-y-4 text-white z-10 ">
-                  <h1 className="text-sm uppercase">Single-family home</h1>
-                  <p className="text-5xl mb-6">Suburban Family Home</p>
-                  <button className="btn ">View Property</button>
-                </div>
+          <div className="relative ">
+            <div
+              className="bg-cover bg-center w-full  relative flex justify-center items-center"
+              style={{
+                backgroundImage:
+                  "url(https://i.ibb.co/KhdQf5K/photo-woodworker-carving-decorative-wooden-1056572-3756.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                width: "100%",
+                height: "90vh",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              {/* Overlay */}
+              <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
+              {/* content */}
+              <div className="absolute text-center space-y-4 text-white z-10 ">
+                <h1 className="lg:text-6xl font-bold text-custom-jute uppercase">
+                  Artistry in Every Detail
+                </h1>
+                <p className="text-xl mb-6">
+                  Explore Our Handcrafted Wooden Furniture
+                </p>
+                <button className="btn ">View Details</button>
               </div>
             </div>
-          </Link>
+          </div>
         </SwiperSlide>
         {/* 2 */}
         <SwiperSlide>
-          <Link to="/property/1">
-            <div className="relative">
-              <div
-                className="bg-cover bg-center w-full h-80vh relative flex justify-center items-center"
-                style={{
-                  backgroundImage:
-                    "url(https://i.ibb.co/XLqSQL8/basket-weaving-photo-artisan-creating-natural-craft-840347-2351.png)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  width: "100%",
-                  height: "90vh",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                {/* Overlay */}
-                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
-                {/* content */}
-                <div className="absolute space-y-4 text-center text-white z-10">
-                  <h1 className="text-sm uppercase">apartment</h1>
-                  <p className="text-5xl mb-6">Downtown Apartment</p>
-                  <button className="btn ">View Property</button>
-                </div>
+          <div className="relative">
+            <div
+              className="bg-cover bg-center w-full h-80vh relative flex justify-center items-center"
+              style={{
+                backgroundImage:
+                  "url(https://i.ibb.co/XLqSQL8/basket-weaving-photo-artisan-creating-natural-craft-840347-2351.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                width: "100%",
+                height: "90vh",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              {/* Overlay */}
+              <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
+              {/* content */}
+              <div className="absolute space-y-4 text-center text-white z-10">
+                <h1 className="lg:text-6xl font-bold text-custom-jute uppercase">
+                  Embrace Natural Elegance
+                </h1>
+                <p className="text-xl mb-6">
+                  {" "}
+                  Discover the Beauty of Jute Home Decor
+                </p>
+                <button className="btn ">View Details</button>
               </div>
             </div>
-          </Link>
+          </div>
         </SwiperSlide>
         {/* 3 */}
         <SwiperSlide>
-          <Link to="/property/5">
-            <div className="relative">
-              <div
-                className="bg-cover bg-center w-full h-80vh relative flex justify-center items-center"
-                style={{
-                  backgroundImage: "url(https://i.ibb.co/xGPf5x6/99849.jpg)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  width: "100%",
-                  height: "90vh",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                {/* Overlay */}
-                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
-                {/* content */}
-                <div className="absolute space-y-4 text-center text-white z-10">
-                  <h1 className="text-sm uppercase">Senior living community</h1>
-                  <p className="text-5xl mb-6">Retirement Community</p>
-                  <button className="btn">View Property</button>
-                </div>
+          <div className="relative">
+            <div
+              className="bg-cover bg-center w-full h-80vh relative flex justify-center items-center"
+              style={{
+                backgroundImage: "url(https://i.ibb.co/xGPf5x6/99849.jpg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                width: "100%",
+                height: "90vh",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              {/* Overlay */}
+              <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
+              {/* content */}
+              <div className="absolute space-y-4 text-center text-white z-10">
+                <h1 className="lg:text-6xl font-bold text-custom-jute uppercase">
+                  Crafted to Perfection
+                </h1>
+                <p className="text-xl mb-6">
+                  Explore Our Handcrafted Wooden Furniture
+                </p>
+                <button className="btn">View Details</button>
               </div>
             </div>
-          </Link>
+          </div>
         </SwiperSlide>
       </Swiper>
       {/* ******************************** */}

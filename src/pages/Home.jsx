@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import SixCraftCard from "../components/SixCraftCard";
 import Catagories from "../components/Catagories";
 import Banner from "../components/Banner";
+import About from "../components/About";
 
 const Home = () => {
   const crafts = useLoaderData();
@@ -11,6 +12,9 @@ const Home = () => {
     <div>
       {/* slider */}
       <Banner></Banner>
+      <div>
+        <About></About>
+      </div>
       <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 pt-12">
         <h2 className="font-bold text-3xl font-oregano text-custom-jute text-center pb-10">
           Popular Items

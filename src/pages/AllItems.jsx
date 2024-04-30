@@ -6,7 +6,7 @@ const AllItems = () => {
   const allCrafts = useLoaderData();
   const [serialNumber, setSerialNumber] = useState(1);
   return (
-    <div>
+    <div className="">
       <h2 className="text-center text-3xl text-custom-jute font-bold font-oregano py-6">
         All Crafts
       </h2>
