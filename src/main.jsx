@@ -66,7 +66,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allCrafts/${params.id}`),
+          fetch(`http://localhost:5000/allCraftsDetail/${params.id}`),
       },
       {
         path: "/update/:id",
