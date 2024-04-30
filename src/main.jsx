@@ -26,12 +26,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/allCrafts"),
+        loader: () =>
+          fetch(
+            "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts"
+          ),
       },
       {
         path: "/all-items",
         element: <AllItems></AllItems>,
-        loader: () => fetch("http://localhost:5000/allCrafts"),
+        loader: () =>
+          fetch(
+            "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts"
+          ),
       },
 
       {
@@ -49,7 +55,10 @@ const router = createBrowserRouter([
             <MyCraft></MyCraft>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allCrafts"),
+        loader: () =>
+          fetch(
+            "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts"
+          ),
       },
       {
         path: "/login",
@@ -71,19 +80,25 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allCraftsDetail/${params.id}`),
+          fetch(
+            `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCraftsDetail/${params.id}`
+          ),
       },
       {
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allCraftsDetail/${params.id}`),
+          fetch(
+            `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCraftsDetail/${params.id}`
+          ),
       },
       {
         path: "/categories/:category",
         element: <CraftByCategory></CraftByCategory>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allCrafts/${params.category}`),
+          fetch(
+            `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts/${params.category}`
+          ),
       },
     ],
   },
