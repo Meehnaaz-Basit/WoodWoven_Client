@@ -10,7 +10,7 @@ const AllItems = () => {
       <h2 className="text-center text-3xl text-custom-jute font-bold font-oregano py-6">
         All Crafts
       </h2>
-      <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0">
+      <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 py-6">
         {/*  */}
 
         <div className="overflow-x-auto">

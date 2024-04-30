@@ -13,6 +13,8 @@ import {
   Keyboard,
   Autoplay,
 } from "swiper/modules";
+import Button from "./buttons/Button";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -57,7 +59,12 @@ const Banner = () => {
                 <p className="text-xl mb-6">
                   Explore Our Handcrafted Wooden Furniture
                 </p>
-                <button className="btn ">View Details</button>
+                <Link to="/all-items">
+                  {" "}
+                  <button>
+                    <Button buttonText="View All"></Button>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -88,7 +95,12 @@ const Banner = () => {
                   {" "}
                   Discover the Beauty of Jute Home Decor
                 </p>
-                <button className="btn ">View Details</button>
+                <Link to="/all-items">
+                  {" "}
+                  <button>
+                    <Button buttonText="View All"></Button>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -117,7 +129,12 @@ const Banner = () => {
                 <p className="text-xl mb-6">
                   Explore Our Handcrafted Wooden Furniture
                 </p>
-                <button className="btn">View Details</button>
+                <Link to="/all-items">
+                  {" "}
+                  <button>
+                    <Button buttonText="View All"></Button>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

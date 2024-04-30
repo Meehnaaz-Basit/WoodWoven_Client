@@ -1,27 +1,26 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Update = () => {
   const { user } = useContext(AuthContext);
   const crafts = useLoaderData();
 
-  const { id } = useParams();
-
-  const craft = crafts.find((craft) => craft._id === parseInt(id));
-
-  // const {
-  //   item_image,
-  //   item_name,
-  //   category,
-  //   short_description,
-  //   price,
-  //   rating,
-  //   customization,
-  //   stock_status,
-  //   user_email,
-  //   user_name,
-  // } = craft;
+  const {
+    _id,
+    item_image,
+    item_name,
+    category,
+    short_description,
+    price,
+    rating,
+    customization,
+    stock_status,
+    user_email,
+    user_name,
+    processing_time,
+  } = crafts;
 
   const handleUpdateCraft = (e) => {
     e.preventDefault();
@@ -54,6 +53,24 @@ const Update = () => {
     };
     console.log(updateCraft);
     // send data to server
+    fetch(`http://localhost:5000/allCrafts/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateCraft),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Updated items Successfully.",
+            icon: "success",
+          });
+        }
+      });
   };
 
   return (
@@ -63,7 +80,9 @@ const Update = () => {
           Welcome{" "}
           <span className="text-custom-jute"> {user?.displayName} </span>
         </h2>
-        <p className="underline font-figtree  ">Update Your Items:</p>
+        <p className="underline font-figtree  ">
+          Update Your Items:{item_name}
+        </p>
       </div>
       <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0">
         <section className="p-6 border-2 border-custom-jute bg-custom-jute">
@@ -81,6 +100,7 @@ const Update = () => {
                     id="item_image"
                     type="text"
                     placeholder="Enter Item Name"
+                    defaultValue={item_image}
                     name="item_image"
                     className="w-full p-3 border-b-2 border-custom-jute"
                     required
@@ -94,6 +114,7 @@ const Update = () => {
                     id="item_name"
                     type="text"
                     placeholder="Enter Item Name"
+                    defaultValue={item_name}
                     name="item_name"
                     className="w-full p-3 border-b-2 border-custom-jute"
                     required
@@ -108,6 +129,7 @@ const Update = () => {
                     id="price"
                     type="number"
                     placeholder="Enter the price"
+                    defaultValue={price}
                     name="price"
                     className="w-full p-3 border-b-2 border-custom-jute "
                     required
@@ -121,6 +143,7 @@ const Update = () => {
                     id="short_description"
                     type="text"
                     placeholder="Enter Short Description"
+                    defaultValue={short_description}
                     name="short_description"
                     className="w-full p-3 border-b-2 border-custom-jute "
                     required
@@ -130,6 +153,7 @@ const Update = () => {
                   <select
                     className="select w-full border-b-2 border-custom-jute"
                     name="category"
+                    defaultValue={category}
                     required
                   >
                     <option disabled selected>
@@ -147,6 +171,7 @@ const Update = () => {
                   <select
                     className="select w-full  border-b-2 border-custom-jute"
                     name="rating"
+                    defaultValue={rating}
                     required
                   >
                     <option disabled selected>
@@ -163,6 +188,7 @@ const Update = () => {
                   <select
                     className="select w-full border-b-2 border-custom-jute"
                     name="customization"
+                    defaultValue={customization}
                     required
                   >
                     <option disabled selected>
@@ -176,6 +202,7 @@ const Update = () => {
                   <select
                     className="select w-full border-b-2 border-custom-jute"
                     name="stock_status"
+                    defaultValue={stock_status}
                     required
                   >
                     <option disabled selected>
@@ -189,6 +216,7 @@ const Update = () => {
                   <select
                     className="select w-full border-b-2 border-custom-jute"
                     name="processing_time"
+                    defaultValue={processing_time}
                     required
                   >
                     <option disabled selected>
@@ -227,7 +255,7 @@ const Update = () => {
             <input
               type="submit"
               className="btn w-full border-2 border-custom-jute bg-custom-jute text-white hover:bg-transparent hover:text-custom-jute hover:border-custom-jute"
-              value="Add Items"
+              value="Update Items"
             />
           </form>
         </section>

@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import Button from "../components/buttons/Button";
 
 const MyCraft = () => {
   const { user } = useContext(AuthContext);
@@ -56,12 +57,13 @@ const MyCraft = () => {
                 (craft) => craft._id !== _id
               );
               // Update the state with the new userCrafts
-              setUserCrafts(updatedUserCrafts);
+              // setUserCrafts(updatedUserCrafts);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your Craft item has been deleted.",
                 icon: "success",
               });
+              setUserCrafts(updatedUserCrafts);
             }
           })
           .catch((error) => {
@@ -77,14 +79,56 @@ const MyCraft = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0">
-      <div>
+    <div className="container mx-auto max-w-[1300px] w-[90%] lg-w[88%] px-0 py-8">
+      {/*  */}
+      <div className="mb-8">
+        <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-custom-jute text-white"
+          >
+            Filter by Customization
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>
+                {" "}
+                <button onClick={() => handleFilterChange("All")}>
+                  All
+                </button>{" "}
+              </a>
+            </li>
+            <li>
+              <a>
+                {" "}
+                <button onClick={() => handleFilterChange("No")}>
+                  No Customization
+                </button>
+              </a>
+            </li>
+            <li>
+              <a>
+                <button onClick={() => handleFilterChange("Yes")}>
+                  Customization
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/*  */}
+
+      {/* <div>
         <button onClick={() => handleFilterChange("All")}>All</button>
         <button onClick={() => handleFilterChange("No")}>
           No Customization
         </button>
         <button onClick={() => handleFilterChange("Yes")}>Customization</button>
-      </div>
+      </div> */}
       <div className="grid lg:grid-cols-3 gap-6">
         {filteredCrafts.length === 0 ? (
           <p className="inset-0 flex justify-center items-center">
@@ -93,7 +137,7 @@ const MyCraft = () => {
         ) : (
           filteredCrafts.map((craft) => (
             <div key={craft._id}>
-              <div className="relative">
+              <div className="relative shadow-md p-6">
                 <div>
                   <img
                     src={craft.item_image}
@@ -101,7 +145,7 @@ const MyCraft = () => {
                     className="w-full h-64 object-contain bg-custom-jute"
                   />
                 </div>
-                <div className="absolute top-0 px-3 py-2 text-sm font-bold text-custom-jute bg-white border border-custom-jute">
+                <div className="absolute top-6 px-3 py-2 text-sm font-bold text-custom-jute bg-white border border-custom-jute">
                   {craft.stock_status}
                 </div>
 
@@ -115,15 +159,18 @@ const MyCraft = () => {
                 <h2 className=" text-xl font-bold text-custom-jute">
                   Price : $ {craft.price}
                 </h2>
-                <div>
-                  <Link to={`/update/${craft._id}`} className="btn">
-                    Update
+                <div className="flex justify-between p-4">
+                  <Link to={`/update/${craft._id}`}>
+                    <button>
+                      {" "}
+                      <Button buttonText="Update"></Button>{" "}
+                    </button>
                   </Link>
-                  <button
-                    onClick={() => handleDelete(craft._id)}
-                    className="btn"
-                  >
-                    Delete
+                  <button onClick={() => handleDelete(craft._id)}>
+                    <button>
+                      {" "}
+                      <Button buttonText="Delete"></Button>{" "}
+                    </button>
                   </button>
                 </div>
               </div>

@@ -28,7 +28,7 @@ const CraftCard = ({ craft, serialNumber }) => {
           <p>{user_email}</p>
         </td>
         <td>
-          <Link to="">
+          <Link to={`/craft-detail/${_id}`}>
             <button>
               <Button buttonText="View Details"></Button>
             </button>

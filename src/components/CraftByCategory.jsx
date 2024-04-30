@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Button from "./buttons/Button";
 
 const CraftByCategory = () => {
@@ -41,9 +41,11 @@ const CraftByCategory = () => {
                 </div>
                 <h2>Price: ${craft.price}</h2>
                 <div>
-                  <button>
-                    <Button buttonText="View Detail"></Button>
-                  </button>
+                  <Link to={`/allCraftsDetail/${craft._id}`}>
+                    <button>
+                      <Button buttonText="View Detail"></Button>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

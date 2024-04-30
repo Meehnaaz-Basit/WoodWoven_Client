@@ -20,7 +20,6 @@ const CraftDetail = () => {
 
   return (
     <div>
-      <h2>detail</h2>
       <div className="p-5 mx-auto sm:p-10 md:p-16  ">
         <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
           <img

@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-// import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);

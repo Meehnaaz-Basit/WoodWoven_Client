@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allCrafts/${params.id}`),
+          fetch(`http://localhost:5000/allCraftsDetail/${params.id}`),
       },
       {
         path: "/categories/:category",

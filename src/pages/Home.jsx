@@ -3,6 +3,7 @@ import SixCraftCard from "../components/SixCraftCard";
 import Catagories from "../components/Catagories";
 import Banner from "../components/Banner";
 import About from "../components/About";
+import Contact from "../components/Contact";
 
 const Home = () => {
   const crafts = useLoaderData();
@@ -27,6 +28,9 @@ const Home = () => {
       </div>
       <div className="py-20">
         <Catagories></Catagories>
+      </div>
+      <div>
+        <Contact></Contact>
       </div>
     </div>
   );

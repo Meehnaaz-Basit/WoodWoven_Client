@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddCraft = () => {
   const { user } = useContext(AuthContext);
@@ -45,7 +46,13 @@ const AddCraft = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        Swal.fire({
+          title: "Added!",
+          text: "Added Successfully.",
+          icon: "success",
+        });
       });
+    e.target.reset();
   };
 
   return (
