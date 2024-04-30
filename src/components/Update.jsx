@@ -65,7 +65,7 @@ const Update = () => {
         // console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
-            title: "Deleted!",
+            title: "Updated!",
             text: "Updated items Successfully.",
             icon: "success",
           });
