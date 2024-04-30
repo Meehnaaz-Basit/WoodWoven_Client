@@ -16,6 +16,7 @@ import CraftDetail from "./components/CraftDetail";
 import Update from "./components/Update";
 import CraftByCategory from "./components/CraftByCategory";
 import PrivateRoute from "./route/PrivateRoute";
+import Error404 from "./pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/*",
+        element: <Error404></Error404>,
       },
       {
         path: "/craft-detail/:id",
