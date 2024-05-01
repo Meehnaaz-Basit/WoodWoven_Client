@@ -1,14 +1,16 @@
 const Contact = () => {
   return (
-    <div className="bg-custom-jute">
+    <div className="bg-white">
       <div className="my-6 py-6">
         <h2 className="text-2xl text-center font-bold  leading-tight lg:text-4xl">
           Let's talk!
         </h2>
         <div className="grid items-center max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 ">
-          <div className="py-6 md:py-0 md:px-6">
-            <h1 className="text-4xl font-bold">Get in touch</h1>
-            <p className="pt-2 pb-4">
+          <div className="py-6 md:py-0 md:px-6 text-custom-jute">
+            <h1 className="text-4xl font-bold text-custom-jute">
+              Get in touch
+            </h1>
+            <p className="pt-2 pb-4 text-custom-jute">
               Fill in the form to start a conversation
             </p>
             <div className="space-y-4">
