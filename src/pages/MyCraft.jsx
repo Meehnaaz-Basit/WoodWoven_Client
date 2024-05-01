@@ -46,12 +46,9 @@ const MyCraft = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`https://woodwoven-server.vercel.app/allCrafts/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

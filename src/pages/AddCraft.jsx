@@ -36,16 +36,13 @@ const AddCraft = () => {
     };
     console.log(addedCraft);
     // send data to server
-    fetch(
-      "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(addedCraft),
-      }
-    )
+    fetch("https://woodwoven-server.vercel.app/allCrafts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addedCraft),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

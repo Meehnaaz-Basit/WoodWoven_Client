@@ -26,18 +26,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch(
-            "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts"
-          ),
+        loader: () => fetch("https://woodwoven-server.vercel.app/allCrafts"),
       },
       {
         path: "/all-items",
         element: <AllItems></AllItems>,
-        loader: () =>
-          fetch(
-            "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts"
-          ),
+        loader: () => fetch("https://woodwoven-server.vercel.app/allCrafts"),
       },
 
       {
@@ -55,10 +49,7 @@ const router = createBrowserRouter([
             <MyCraft></MyCraft>
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch(
-            "https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts"
-          ),
+        loader: () => fetch("https://woodwoven-server.vercel.app/allCrafts"),
       },
       {
         path: "/login",
@@ -81,7 +72,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCraftsDetail/${params.id}`
+            `https://woodwoven-server.vercel.app/allCraftsDetail/${params.id}`
           ),
       },
       {
@@ -89,7 +80,7 @@ const router = createBrowserRouter([
         element: <Update></Update>,
         loader: ({ params }) =>
           fetch(
-            `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCraftsDetail/${params.id}`
+            `https://woodwoven-server.vercel.app/allCraftsDetail/${params.id}`
           ),
       },
       {
@@ -97,7 +88,7 @@ const router = createBrowserRouter([
         element: <CraftByCategory></CraftByCategory>,
         loader: ({ params }) =>
           fetch(
-            `https://woodwoven-server-lf4syyk49-meehnaazs-projects.vercel.app/allCrafts/${params.category}`
+            `https://woodwoven-server.vercel.app/allCrafts/${params.category}`
           ),
       },
     ],
