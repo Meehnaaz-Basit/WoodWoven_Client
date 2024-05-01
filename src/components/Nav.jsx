@@ -225,7 +225,7 @@ const Nav = () => {
           )} */}
         </div>
         {/*  */}
-        <a id="clickable">
+        <a id="clickable" className="z-30">
           {theme !== null && (
             <label className="cursor-pointer grid place-items-center">
               <input
