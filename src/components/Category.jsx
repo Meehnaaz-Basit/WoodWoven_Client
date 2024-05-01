@@ -15,7 +15,7 @@ const Category = ({ eachCategory }) => {
           <img
             src={category_image}
             alt=""
-            className="w-full h-auto hover:scale-125"
+            className="w-full h-80 object-cover hover:scale-125"
           />
           <div className="absolute inset-0 flex justify-center items-center bg-custom-jute bg-opacity-60 text-opacity-50 hover:bg-opacity-30 transition-all duration-300">
             <h1 className="text-white font-bold text-xl top-1/2 transform -translate-y-1/2">

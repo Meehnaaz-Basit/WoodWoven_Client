@@ -1,11 +1,18 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { useLoaderData, useParams } from "react-router-dom";
+import {
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Update = () => {
   const { user } = useContext(AuthContext);
   const crafts = useLoaderData();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     _id,
@@ -69,6 +76,8 @@ const Update = () => {
             text: "Updated items Successfully.",
             icon: "success",
           });
+
+          navigate(location?.state ? location.state : "/my-craft");
         }
       });
   };

@@ -14,7 +14,7 @@ const AllItems = () => {
         {/*  */}
 
         <div className="overflow-x-auto">
-          <table className="table table-zebra text-center">
+          <table className="table lg:table-lg table-sm table-zebra text-center">
             {/* head */}
             <thead>
               <tr>

@@ -20,7 +20,7 @@ const About = () => {
             <div className="relative flex items-center bg-gray-100">
               <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span>
 
-              <div className="p-8 sm:p-16 lg:p-24">
+              <div className="p-8 sm:p-16 lg:p-24 mt-8">
                 <h2 className="text-4xl font-bold font-oregano text-custom-jute ">
                   ABOUT US
                 </h2>

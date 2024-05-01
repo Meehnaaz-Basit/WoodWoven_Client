@@ -65,11 +65,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/craft-detail/:id",
-        element: (
-          <PrivateRoute>
-            <CraftDetail></CraftDetail>
-          </PrivateRoute>
-        ),
+        element: <CraftDetail></CraftDetail>,
         loader: ({ params }) =>
           fetch(
             `https://woodwoven-server.vercel.app/allCraftsDetail/${params.id}`

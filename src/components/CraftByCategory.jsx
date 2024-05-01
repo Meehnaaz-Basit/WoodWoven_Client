@@ -41,7 +41,7 @@ const CraftByCategory = () => {
                 </div>
                 <h2>Price: ${craft.price}</h2>
                 <div>
-                  <Link to={`/allCraftsDetail/${craft._id}`}>
+                  <Link to={`/craft-detail/${craft._id}`}>
                     <button>
                       <Button buttonText="View Detail"></Button>
                     </button>

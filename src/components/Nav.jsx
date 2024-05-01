@@ -95,7 +95,11 @@ const Nav = () => {
       <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn p-1 btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -113,7 +117,7 @@ const Nav = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-40 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navMenu}
             </ul>
@@ -128,25 +132,24 @@ const Nav = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navMenu}</ul>
         </div>
-        <div className="navbar-end gap-4">
+        <div className="navbar-end lg:gap-4 gap-1">
           {/*  */}
           {/* user profile image & register*/}
           {user ? (
             <div
-              className="tooltip tooltip-bottom tooltip-accent  "
+              className="tooltip tooltip-bottom tooltip-accent z-40  "
               data-tip={user.displayName}
             >
               {user.photoURL ? (
                 <img
-                  className="w-14 h-14 rounded-full border-2 border-custom-jute object-cover "
+                  className="lg:w-14 lg:h-14 rounded-full border-2 border-custom-jute object-cover "
                   // title={user.displayName}
                   src={user.photoURL}
                   alt="Profile"
                 />
               ) : (
                 <img
-                  data-aos="zoom-in"
-                  className="w-10"
+                  className="lg:w-10 w-6"
                   src="https://i.ibb.co/X3yrLFJ/pngegg.png"
                   alt=""
                 />
@@ -238,8 +241,8 @@ const Nav = () => {
               <svg
                 className="col-start-1 row-start-1 stroke-base-100 fill-base-100"
                 xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
+                width="10"
+                height="10"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -253,8 +256,8 @@ const Nav = () => {
               <svg
                 className="col-start-2 row-start-1 stroke-base-100 fill-base-100"
                 xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
+                width="10"
+                height="10"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -267,7 +270,7 @@ const Nav = () => {
             </label>
           )}
         </a>
-        <Tooltip anchorSelect="#clickable" clickable>
+        <Tooltip anchorSelect="#clickable" className="z-40" clickable>
           <button>Change theme</button>
         </Tooltip>
         {/*  */}
