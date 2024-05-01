@@ -15,24 +15,44 @@ const Footer = () => {
           </div>
           {/*  */}
           <div className="flex gap-3 lg:basis-1/3  justify-center ">
-            <div className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all">
+            <a
+              href="https://www.facebook.com/meehnaazbasit"
+              target="_blank"
+              className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all"
+            >
               <FaFacebookF className="text-3xl" />
-            </div>
-            <div className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all">
+            </a>
+            <a
+              href="https://www.facebook.com/meehnaazbasit"
+              target="_blank"
+              className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all"
+            >
               <FaTwitter className="text-3xl" />
-            </div>
-            <div className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all">
+            </a>
+            <a
+              href="https://www.facebook.com/meehnaazbasit"
+              target="_blank"
+              className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all"
+            >
               <FaInstagram className="text-3xl" />
-            </div>
-            <div className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all">
+            </a>
+            <a
+              href="https://www.facebook.com/meehnaazbasit"
+              target="_blank"
+              className="h-12 w-12 border-2 border-white rounded-full justify-center flex items-center text-white hover:text-custom-jute hover:bg-white transition-all"
+            >
               <FaGithub className="text-3xl" />
-            </div>
+            </a>
           </div>
           {/*  */}
           <div className="text-white lg:basis-1/3">
             <p>
               ©2024, WoodWoven. <br /> All rights reserved. Website by{" "}
-              <a className="font-bold" href="#">
+              <a
+                className="font-bold"
+                href="https://www.facebook.com/meehnaazbasit"
+                target="_blank"
+              >
                 Meehnaaz Basit
               </a>
             </p>

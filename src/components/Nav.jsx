@@ -124,7 +124,7 @@ const Nav = () => {
           </div>
           <a
             href="/"
-            className="lg:text-4xl text-xl font-extrabold text-custom-jute font-oregano"
+            className="md:text-4xl text-xl font-extrabold text-custom-jute font-oregano"
           >
             WoodWoven
           </a>
@@ -132,7 +132,7 @@ const Nav = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navMenu}</ul>
         </div>
-        <div className="navbar-end lg:gap-4 gap-1">
+        <div className="navbar-end md:gap-4 gap-1">
           {/*  */}
           {/* user profile image & register*/}
           {user ? (
@@ -142,14 +142,14 @@ const Nav = () => {
             >
               {user.photoURL ? (
                 <img
-                  className="lg:w-14 lg:h-14 rounded-full border-2 border-custom-jute object-cover "
+                  className="md:w-14 md:h-14 w-10 h-10 rounded-full border-2 border-custom-jute object-cover "
                   // title={user.displayName}
                   src={user.photoURL}
                   alt="Profile"
                 />
               ) : (
                 <img
-                  className="lg:w-10 w-6"
+                  className="md:w-14 md:h-14 w-10 h-10 rounded-full border-2 border-custom-jute object-cover "
                   src="https://i.ibb.co/X3yrLFJ/pngegg.png"
                   alt=""
                 />

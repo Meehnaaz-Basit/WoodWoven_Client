@@ -53,7 +53,7 @@ const Banner = () => {
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
               {/* content */}
               <div className="absolute lg:px-0 px-12 text-center space-y-4 text-white z-10 ">
-                <h1 className="lg:text-6xl text-3xl font-bold text-custom-jute uppercase">
+                <h1 className="md:text-6xl text-3xl font-bold text-custom-jute uppercase">
                   Artistry in Every Detail
                 </h1>
                 <p className="text-xl mb-6">
@@ -88,7 +88,7 @@ const Banner = () => {
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
               {/* content */}
               <div className="absolute lg:px-0 px-12 space-y-4 text-center text-white z-10">
-                <h1 className="lg:text-6xl text-3xl font-bold text-custom-jute uppercase">
+                <h1 className="md:text-6xl text-3xl font-bold text-custom-jute uppercase">
                   Embrace Natural Elegance
                 </h1>
                 <p className="text-xl mb-6">
@@ -123,7 +123,7 @@ const Banner = () => {
               <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
               {/* content */}
               <div className="absolute  lg:px-0 px-12  space-y-4 text-center text-white z-10">
-                <h1 className="lg:text-6xl text-3xl font-bold text-custom-jute uppercase">
+                <h1 className="md:text-6xl text-3xl font-bold text-custom-jute uppercase">
                   Crafted to Perfection
                 </h1>
                 <p className="text-xl mb-6">

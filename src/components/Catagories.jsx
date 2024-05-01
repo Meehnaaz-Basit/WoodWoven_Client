@@ -15,7 +15,7 @@ const Catagories = () => {
     <div>
       <div className="text-center font-bold font-oregano text-sm text-custom-jute">
         <h2>
-          <span className="lg:text-4xl text-2xl"> Explore Our Categories </span>
+          <span className="md:text-4xl text-2xl"> Explore Our Categories </span>
           <br /> We Offer :
           <Typewriter
             words={[
