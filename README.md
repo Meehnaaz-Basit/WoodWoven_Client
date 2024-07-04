@@ -6,7 +6,7 @@ WoodWoven is a Jute & Wooden Crafts store. Users can securely log in, manage cra
 
 [WoodWoven Live Site](https://woodwoven-a10.web.app)
 
-## Best Features
+## Features
 
 1. **Dynamic Craft Item Management**
 
